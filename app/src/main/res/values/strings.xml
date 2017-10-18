@@ -3,4 +3,5 @@
     <string name="delete_button">Delete</string>
     <string name="edit_button">Edit</string>
     <string name="save_button">Save</string>
+    <string name="new_button">New</string>
 </resources>
