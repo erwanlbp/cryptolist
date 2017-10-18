@@ -1,7 +1,6 @@
 package fr.eisti.listviewexample;
 
 import android.content.Intent;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.TextView;
 public class MenuActivity extends AppCompatActivity {
 
     private String cryptoName;
-   // private Cryptomonnaie cryptomonnaie;
+    private Cryptomonnaie cryptomonnaie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,19 +18,22 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         this.cryptoName = intent.getStringExtra("cryptoName");
-        //this.cryptomonnaie =
+        this.cryptomonnaie = Datas.getInstance().get(this.cryptoName);
 
-        //TextView textview = (TextView) findViewById(R.id.cryptoName_tv);
-        //textview.setText(cryptoName);
+        TextView cryptoNameTv = (TextView) findViewById(R.id.cryptoName_tv);
+        cryptoNameTv.setText(cryptoName);
 
-        //TextView textView = (TextView) findViewById(R.id.cryptoDescription_tv);
-
-
+        TextView cryptoDescriptionTv = (TextView) findViewById(R.id.cryptoDescription_tv);
+        cryptoDescriptionTv.setText(cryptomonnaie.getDescription());
     }
 
     public void edit(View view) {
         Intent intent = new Intent(this, EditActivity.class);
         intent.putExtra("cryptoName", cryptoName);
         startActivity(intent);
+    }
+
+    public void delete(View view) {
+        Datas.getInstance().delete(cryptomonnaie);
     }
 }

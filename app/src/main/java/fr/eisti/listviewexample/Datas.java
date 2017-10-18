@@ -17,7 +17,7 @@ public class Datas {
         this.cryptomonnaies = new ArrayList<>();
     }
 
-    public Datas getInstance() {
+    public static Datas getInstance() {
         if(instance==null)
             instance = new Datas();
         return instance;

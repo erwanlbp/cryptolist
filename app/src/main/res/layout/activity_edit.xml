@@ -19,27 +19,27 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="27dp"
+            android:onClick="save"
             android:text="@string/save_button" />
 
-        <TextView
-            android:id="@+id/editCryptoName_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="86dp"
-            android:text="TextView"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
+        <EditText
             android:id="@+id/editCryptoDescription_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/editCryptoName_tv"
-            android:layout_below="@+id/editCryptoName_tv"
-            android:layout_marginTop="95dp"
-            android:text="TextView"
-            android:textSize="18sp" />
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:id="@+id/editCryptoName_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/editCryptoDescription_tv"
+            android:layout_alignStart="@+id/editCryptoDescription_tv"
+            android:layout_marginBottom="105dp"
+            android:ems="10"
+            android:inputType="text" />
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
