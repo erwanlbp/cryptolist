@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fr.eisti.listviewexample.MenuActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <RelativeLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+
+        <Button
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="41dp"
+            android:layout_toStartOf="@+id/cryptoName_tv"
+            android:onClick="edit"
+            android:text="@string/edit_button" />
+
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_button"
+            android:layout_alignBaseline="@+id/edit_button"
+            android:layout_alignBottom="@+id/edit_button"
+            android:layout_toEndOf="@+id/cryptoName_tv" />
+
+        <TextView
+            android:id="@+id/cryptoName_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="92dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cryptoDescription_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cryptoName_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="101dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            tools:layout_editor_absoluteX="-246dp"
+            tools:layout_editor_absoluteY="374dp" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
