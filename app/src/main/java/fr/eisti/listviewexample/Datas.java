@@ -16,6 +16,7 @@ public class Datas {
     private Datas(){
         this.cryptomonnaies = new ArrayList<>();
         this.cryptomonnaies.add(new Cryptomonnaie("Bitcoin", "La plus chere"));
+        this.cryptomonnaies.add(new Cryptomonnaie("Ethereum", "La plus rentable"));
     }
 
     public static Datas getInstance() {

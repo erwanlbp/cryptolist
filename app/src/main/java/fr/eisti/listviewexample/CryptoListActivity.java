@@ -28,5 +28,13 @@ public class CryptoListActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
+
+        Intent intent = new Intent(this, MenuActivity.class);
+        intent.putExtra(Cryptomonnaie.NAME, Datas.getInstance().getCryptomonnaies().get(position).getName());
+        startActivity(intent);
+    }
+
+    public void clickAddEntry(View view) {
+        finish();
     }
 }

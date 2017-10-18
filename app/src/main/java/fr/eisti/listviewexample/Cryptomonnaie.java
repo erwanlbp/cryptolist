@@ -6,6 +6,8 @@ package fr.eisti.listviewexample;
 
 public class Cryptomonnaie {
 
+    public final static String NAME = "CRYPTO_NAME";
+
     private String name;
     private String description;
 
