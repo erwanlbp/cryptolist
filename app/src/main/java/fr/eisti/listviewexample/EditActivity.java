@@ -19,7 +19,7 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
 
         Intent intent = getIntent();
-        String cryptoName = intent.getStringExtra("cryptoName");
+        String cryptoName = intent.getStringExtra(Cryptomonnaie.NAME);
         this.cryptomonnaie = Datas.getInstance().get(cryptoName);
 
         EditText textCryptoName  = (EditText) findViewById(R.id.editCryptoName_tv);

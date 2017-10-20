@@ -17,7 +17,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Intent intent = getIntent();
-        this.cryptoName = intent.getStringExtra("cryptoName");
+        this.cryptoName = intent.getStringExtra(Cryptomonnaie.NAME);
         this.cryptomonnaie = Datas.getInstance().get(this.cryptoName);
 
         TextView cryptoNameTv = (TextView) findViewById(R.id.cryptoName_tv);
@@ -29,11 +29,13 @@ public class MenuActivity extends AppCompatActivity {
 
     public void edit(View view) {
         Intent intent = new Intent(this, EditActivity.class);
-        intent.putExtra("cryptoName", cryptoName);
+        intent.putExtra(Cryptomonnaie.NAME, cryptoName);
         startActivity(intent);
+        finish();
     }
 
     public void delete(View view) {
         Datas.getInstance().delete(cryptomonnaie);
+        finish();
     }
 }
