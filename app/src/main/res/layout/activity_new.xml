@@ -20,16 +20,19 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="75dp"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/newCryptoDescription_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/newCryptoName_tv"
-            android:layout_centerVertical="true"
             android:ems="10"
-            android:inputType="textMultiLine" />
+            android:inputType="textMultiLine"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/button2" />
 
         <Button
             android:id="@+id/button2"

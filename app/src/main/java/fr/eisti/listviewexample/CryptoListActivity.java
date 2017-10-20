@@ -10,6 +10,8 @@ import java.util.List;
 
 public class CryptoListActivity extends ListActivity {
 
+    private CustomAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +23,7 @@ public class CryptoListActivity extends ListActivity {
             names[i] = monnaies.get(i).getName();
         }
 
-        CustomAdapter adapter = new CustomAdapter(this, R.layout.cryptolist, names, null);
+        adapter = new CustomAdapter(this, R.layout.cryptolist, names, null);
         setListAdapter(adapter);
     }
 
@@ -32,9 +34,11 @@ public class CryptoListActivity extends ListActivity {
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra(Cryptomonnaie.NAME, Datas.getInstance().getCryptomonnaies().get(position).getName());
         startActivity(intent);
+
     }
 
     public void clickAddEntry(View view) {
-        finish();
+        Intent intent = new Intent(this, NewActivity.class);
+        startActivity(intent);
     }
 }

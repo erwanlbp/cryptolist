@@ -31,6 +31,7 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EditActivity.class);
         intent.putExtra(Cryptomonnaie.NAME, cryptoName);
         startActivity(intent);
+        finish();
     }
 
     public void delete(View view) {

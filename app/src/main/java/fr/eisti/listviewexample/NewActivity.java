@@ -14,8 +14,8 @@ public class NewActivity extends AppCompatActivity {
     }
 
     public void addNew(View view) {
-        EditText textCryptoName  = (EditText) findViewById(R.id.editCryptoName_tv);
-        EditText textCryptoDescription = (EditText) findViewById(R.id.editCryptoDescription_tv);
+        EditText textCryptoName  = (EditText) findViewById(R.id.newCryptoName_tv);
+        EditText textCryptoDescription = (EditText) findViewById(R.id.newCryptoDescription_tv);
 
         String name = textCryptoName.getText().toString();
         String des = textCryptoDescription.getText().toString();
