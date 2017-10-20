@@ -11,21 +11,22 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by ErwanLBP on 18/10/17.
  */
 
-public class CustomAdapter extends ArrayAdapter<String> {
+public class CustomAdapter extends ArrayAdapter<Cryptomonnaie> {
 
-    private final String[] items;
-    private final Context context;
-    private final Integer[] thumbnails;
+    private  Context context;
+    private List<Cryptomonnaie > cryptomonnaies;
 
-    public CustomAdapter(Context context, int layoutToInflate, String[] items, Integer[] thumbnails) {
-        super(context, R.layout.cryptolist, items);
+    public CustomAdapter(Context context, int layoutToInflate, List<Cryptomonnaie > cryptomonnaies) {
+        super(context, R.layout.cryptolist,cryptomonnaies);
         this.context = context;
-        this.items = items;
-        this.thumbnails = thumbnails;
+        this.cryptomonnaies = cryptomonnaies;
     }
 
     @NonNull
@@ -35,8 +36,13 @@ public class CustomAdapter extends ArrayAdapter<String> {
         View row = inflater.inflate(R.layout.cryptolist, null);
         TextView label = (TextView) row.findViewById(R.id.tvLabel);
 //        ImageView icon = (ImageView) row.findViewById(R.id.ivIcon);
-        label.setText(this.items[position]);
+        label.setText(this.cryptomonnaies.get(position).getName());
 //        icon.setImageResource(this.thumbnails[position]);
         return row;
+    }
+
+    public void swapItems(List<Cryptomonnaie> cryptomonnaies) {
+        this.cryptomonnaies = cryptomonnaies;
+        notifyDataSetChanged();
     }
 }

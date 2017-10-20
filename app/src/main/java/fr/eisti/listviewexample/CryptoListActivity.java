@@ -18,12 +18,7 @@ public class CryptoListActivity extends ListActivity {
         setContentView(R.layout.activity_crypto_list);
 
         List<Cryptomonnaie> monnaies = Datas.getInstance().getCryptomonnaies();
-        String[] names = new String[monnaies.size()];
-        for (int i = 0; i < monnaies.size(); i++) {
-            names[i] = monnaies.get(i).getName();
-        }
-
-        adapter = new CustomAdapter(this, R.layout.cryptolist, names, null);
+        adapter = new CustomAdapter(this, R.layout.cryptolist, monnaies);
         setListAdapter(adapter);
     }
 
@@ -34,11 +29,16 @@ public class CryptoListActivity extends ListActivity {
         Intent intent = new Intent(this, MenuActivity.class);
         intent.putExtra(Cryptomonnaie.NAME, Datas.getInstance().getCryptomonnaies().get(position).getName());
         startActivity(intent);
-
     }
 
     public void clickAddEntry(View view) {
         Intent intent = new Intent(this, NewActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.swapItems(Datas.getInstance().getCryptomonnaies());
     }
 }

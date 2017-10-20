@@ -36,5 +36,6 @@ public class MenuActivity extends AppCompatActivity {
 
     public void delete(View view) {
         Datas.getInstance().delete(cryptomonnaie);
+        finish();
     }
 }
