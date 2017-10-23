@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".CryptoListActivity" />
-        <activity android:name=".MenuActivity" />
         <activity android:name=".EditActivity" />
         <activity android:name=".NewActivity" />
     </application>

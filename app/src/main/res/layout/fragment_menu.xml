@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.eisti.listviewexample.MenuActivity"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:context="fr.eisti.listviewexample.fragments.MenuFragment">
+
+    <!-- TODO: Update blank fragment layout -->
 
     <RelativeLayout
         android:layout_width="368dp"
@@ -65,5 +64,4 @@
             tools:layout_editor_absoluteX="-246dp"
             tools:layout_editor_absoluteY="374dp" />
     </RelativeLayout>
-
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>
