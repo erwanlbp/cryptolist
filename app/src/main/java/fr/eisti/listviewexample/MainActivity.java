@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickStart(View view) {
-        Intent intent = new Intent(this, CryptoListActivity.class);
+        Intent intent = new Intent(this, CryptoActivity.class);
         startActivity(intent);
     }
 }
