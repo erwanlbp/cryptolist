@@ -2,11 +2,15 @@ package fr.eisti.listviewexample;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
 import java.util.List;
+
+import fr.eisti.listviewexample.DB.MySQL;
+import fr.eisti.listviewexample.providers.DBProvider;
 
 public class CryptoListActivity extends ListActivity {
 
@@ -17,7 +21,8 @@ public class CryptoListActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_list);
 
-        List<Cryptomonnaie> monnaies = Datas.getInstance().getCryptomonnaies();
+        DBProvider dbProvider = new DBProvider();
+        List<Cryptomonnaie> monnaies = dbProvider.selectCryptoList(this);
         adapter = new CustomAdapter(this, R.layout.cryptolist, monnaies);
         setListAdapter(adapter);
     }

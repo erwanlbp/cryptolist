@@ -11,6 +11,8 @@ public class Cryptomonnaie {
     private String name;
     private String description;
 
+    public Cryptomonnaie() {}
+
     public Cryptomonnaie(String name, String description) {
         this.name = name;
         this.description = description;
