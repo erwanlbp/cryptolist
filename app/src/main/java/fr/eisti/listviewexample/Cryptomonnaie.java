@@ -8,12 +8,14 @@ public class Cryptomonnaie {
 
     public final static String NAME = "CRYPTO_NAME";
 
+    private long ID;
     private String name;
     private String description;
 
     public Cryptomonnaie() {}
 
-    public Cryptomonnaie(String name, String description) {
+    public Cryptomonnaie(long ID, String name, String description) {
+        this.ID = ID;
         this.name = name;
         this.description = description;
     }
@@ -37,5 +39,13 @@ public class Cryptomonnaie {
     @Override
     public String toString() {
         return name;
+    }
+
+    public long getID() {
+        return ID;
+    }
+
+    public void setID(long ID) {
+        this.ID = ID;
     }
 }
