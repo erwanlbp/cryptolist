@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.eisti.listviewexample.activities.CryptoActivity">
+    tools:context="fr.eisti.listviewexample.activities.MenuActivity">
 
     <FrameLayout
-        android:id="@+id/crypto_list"
-        android:layout_width="368dp"
+        android:id="@+id/crypto_menu"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

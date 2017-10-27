@@ -9,16 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CryptoListActivity" />
-        <activity android:name=".EditActivity" />
-        <activity android:name=".NewActivity" />
+        <activity android:name=".activities.CryptoActivity" />
+        <activity android:name=".activities.EditActivity" />
+        <activity android:name=".activities.NewActivity" />
+        <activity android:name=".activities.MenuActivity" />
+
     </application>
 
 </manifest>

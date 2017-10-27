@@ -1,67 +1,88 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.eisti.listviewexample.fragments.MenuFragment">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="fr.eisti.listviewexample.fragments.MenuFragment"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
 
-    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/cryptoName_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cryptoDescription_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+    <TextView
+        android:id="@+id/cryptoDescription_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Description"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cryptoDescription_et">
 
         <Button
             android:id="@+id/edit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="41dp"
-            android:layout_marginStart="42dp"
-            android:onClick="edit"
-            android:text="@string/edit_button" />
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/edit_button"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/delete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/edit_button"
-            android:layout_alignBottom="@+id/edit_button"
-            android:layout_marginStart="40dp"
-            android:layout_toEndOf="@+id/cryptoDescription_tv"
-            android:onClick="delete"
-            android:text="@string/delete_button" />
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/delete_button"
+            tools:ignore="ButtonStyle" />
 
-        <TextView
-            android:id="@+id/cryptoName_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="92dp"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/cryptoDescription_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cryptoName_tv"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="101dp"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="-246dp"
-            tools:layout_editor_absoluteY="374dp" />
-    </RelativeLayout>
-</FrameLayout>
+</LinearLayout>

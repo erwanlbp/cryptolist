@@ -2,28 +2,27 @@ package fr.eisti.listviewexample.fragments;
 
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.List;
-
-import fr.eisti.listviewexample.Cryptomonnaie;
 import fr.eisti.listviewexample.CustomAdapter;
-import fr.eisti.listviewexample.Datas;
 import fr.eisti.listviewexample.R;
+import fr.eisti.listviewexample.providers.CryptoListFragmentProvider;
 
 public class CryptomonnaiesListFragment extends ListFragment {
 
     private CustomAdapter adapter;
+    private CryptoListFragmentProvider provider;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
     public CryptomonnaiesListFragment() {
+        this.provider = new CryptoListFragmentProvider(this);
     }
 
     public static CryptomonnaiesListFragment newInstance() {
@@ -35,8 +34,9 @@ public class CryptomonnaiesListFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cryptomonnaies_list, container, false);
 
-        List<Cryptomonnaie> monnaies = Datas.getInstance().getCryptomonnaies();
-        adapter = new CustomAdapter(getActivity(), R.layout.fragment_cryptomonnaies, monnaies);
+        Log.i("#####", "onCreateView");
+
+        adapter = new CustomAdapter(getActivity(), R.layout.fragment_cryptomonnaies, provider.buildList());
         setListAdapter(adapter);
 
         return view;
@@ -45,12 +45,13 @@ public class CryptomonnaiesListFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Toast.makeText(getActivity(), "Load " + position, Toast.LENGTH_SHORT).show();
+        provider.itemClicked(position);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        adapter.swapItems(Datas.getInstance().getCryptomonnaies());
+        Log.i("#####", "onResume");
+        adapter.swapItems(provider.buildList());
     }
 }

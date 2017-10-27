@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +19,11 @@ import java.util.List;
 
 public class CustomAdapter extends ArrayAdapter<Cryptomonnaie> {
 
-    private  Context context;
-    private List<Cryptomonnaie > cryptomonnaies;
+    private Context context;
+    private List<Cryptomonnaie> cryptomonnaies;
 
-    public CustomAdapter(Context context, int layoutToInflate, List<Cryptomonnaie > cryptomonnaies) {
-        super(context, R.layout.cryptolist,cryptomonnaies);
+    public CustomAdapter(Context context, int layoutToInflate, List<Cryptomonnaie> cryptomonnaies) {
+        super(context, R.layout.fragment_cryptomonnaies, cryptomonnaies);
         this.context = context;
         this.cryptomonnaies = cryptomonnaies;
     }
@@ -31,10 +32,12 @@ public class CustomAdapter extends ArrayAdapter<Cryptomonnaie> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.cryptolist, null);
+        View row = inflater.inflate(R.layout.fragment_cryptomonnaies, null);
 
-        TextView id = (TextView) row.findViewById(R.id.id);
-        id.setText(position);
+        TextView id = (TextView) row.findViewById(R.id.idCrypto);
+        id.setText(String.valueOf(position));
+
+        Log.i("#####", "getView " + this.cryptomonnaies.get(position).getName());
 
         TextView label = (TextView) row.findViewById(R.id.content);
         label.setText(this.cryptomonnaies.get(position).getName());

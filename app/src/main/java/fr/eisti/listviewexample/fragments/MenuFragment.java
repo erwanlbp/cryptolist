@@ -1,31 +1,36 @@
 package fr.eisti.listviewexample.fragments;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import fr.eisti.listviewexample.Cryptomonnaie;
-import fr.eisti.listviewexample.Datas;
-import fr.eisti.listviewexample.EditActivity;
 import fr.eisti.listviewexample.R;
+import fr.eisti.listviewexample.providers.MenuFragmentProvider;
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends Fragment implements View.OnClickListener {
+
+    private MenuFragmentProvider provider;
+    private TextView cryptoNameTv;
+    private TextView cryptoDescriptionTv;
 
     private String cryptoName;
     private Cryptomonnaie cryptomonnaie;
 
     public MenuFragment() {
-        // Required empty public constructor
+        this.provider = new MenuFragmentProvider(this);
     }
 
     public static MenuFragment newInstance(String param1) {
         MenuFragment fragment = new MenuFragment();
-        Bundle args = new Bundle();
 
+        Bundle args = new Bundle();
         args.putString(Cryptomonnaie.NAME, param1);
         fragment.setArguments(args);
 
@@ -33,29 +38,59 @@ public class MenuFragment extends Fragment {
     }
 
     public void edit(View view) {
-        Intent intent = new Intent(getActivity(), EditActivity.class);
-        intent.putExtra(Cryptomonnaie.NAME, cryptoName);
-        startActivity(intent);
+        this.provider.edit(cryptoName);
     }
 
     public void delete(View view) {
-        Datas.getInstance().delete(cryptomonnaie);
+        boolean success = this.provider.delete(cryptomonnaie);
+        if (!success) {
+            Toast.makeText(getActivity(), "Failed deleting this", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
+        if (getArguments() == null) {
+            return view;
+        }
+
         this.cryptoName = getArguments().getString(Cryptomonnaie.NAME);
-        this.cryptomonnaie = Datas.getInstance().get(this.cryptoName);
 
-        TextView cryptoNameTv = (TextView) view.findViewById(R.id.cryptoName_tv);
-        cryptoNameTv.setText(cryptoName);
+        // TODO TO CHANGE
+        this.cryptomonnaie = this.provider.findDetails(this.cryptoName);
+        if (this.cryptomonnaie == null) {
+            view.setVisibility(View.INVISIBLE);
+            return view;
+        }
 
-        TextView cryptoDescriptionTv = (TextView) view.findViewById(R.id.cryptoDescription_tv);
+        cryptoNameTv = (TextView) view.findViewById(R.id.cryptoName_tv);
+        cryptoNameTv.setText(cryptomonnaie.getName());
+
+        cryptoDescriptionTv = (TextView) view.findViewById(R.id.cryptoDescription_tv);
         cryptoDescriptionTv.setText(cryptomonnaie.getDescription());
+
+        view.findViewById(R.id.delete_button).setOnClickListener(this);
+        view.findViewById(R.id.edit_button).setOnClickListener(this);
 
         return view;
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.edit_button:
+                edit(view);
+                Log.i("#####", "MenuFragment Edit");
+                break;
+            case R.id.delete_button:
+                Log.i("#####", "MenuFragment Delete");
+                delete(view);
+                break;
+            default:
+                Toast.makeText(getActivity(), "Onclick ID not recognized", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }
