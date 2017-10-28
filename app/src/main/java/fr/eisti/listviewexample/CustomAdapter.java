@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import fr.eisti.listviewexample.datas.Cryptomonnaie;
+
 /**
  * Created by ErwanLBP on 18/10/17.
  */

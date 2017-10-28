@@ -1,4 +1,4 @@
-package fr.eisti.listviewexample;
+package fr.eisti.listviewexample.datas;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,6 @@ public class Datas {
 
     private Datas() {
         this.cryptomonnaies = new ArrayList<>();
-        this.cryptomonnaies.add(new Cryptomonnaie("Bitcoin", "La plus chere"));
-        this.cryptomonnaies.add(new Cryptomonnaie("Ethereum", "La plus rentable"));
     }
 
     public static Datas getInstance() {

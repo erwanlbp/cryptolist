@@ -7,8 +7,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eisti.listviewexample.Cryptomonnaie;
-import fr.eisti.listviewexample.Datas;
+import fr.eisti.listviewexample.datas.Cryptomonnaie;
+import fr.eisti.listviewexample.datas.Datas;
 import fr.eisti.listviewexample.R;
 import fr.eisti.listviewexample.activities.MenuActivity;
 import fr.eisti.listviewexample.activities.NewActivity;
@@ -54,7 +54,7 @@ public class CryptoListFragmentProvider {
 
     public List<Cryptomonnaie> buildList() {
         List<Cryptomonnaie> monnaies = new ArrayList<>();
-        monnaies.add(new Cryptomonnaie("Add ...", ""));
+        monnaies.add(new Cryptomonnaie(-1,"Add ...", ""));
         monnaies.addAll(Datas.getInstance().getCryptomonnaies());
         Log.i("#####", "buildList() -> " + monnaies.size());
         return monnaies;

@@ -8,9 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.eisti.listviewexample.Cryptomonnaie;
-import fr.eisti.listviewexample.DB.DBContract;
-import fr.eisti.listviewexample.DB.MySQL;
+import fr.eisti.listviewexample.datas.Cryptomonnaie;
+import fr.eisti.listviewexample.datas.DBContract;
+import fr.eisti.listviewexample.datas.MySQL;
 
 public class DBProvider {
 

@@ -1,4 +1,4 @@
-package fr.eisti.listviewexample;
+package fr.eisti.listviewexample.datas;
 
 /**
  * Created by ErwanLBP on 18/10/17.

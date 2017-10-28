@@ -1,4 +1,4 @@
-package fr.eisti.listviewexample.DB;
+package fr.eisti.listviewexample.datas;
 
 import android.provider.BaseColumns;
 
@@ -11,6 +11,6 @@ public class DBContract {
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_NAME_TYPE = "TEXT NOT NULL";
         public static final String COLUMN_DESCRIPTION = "description";
-        public static final String COLUMN_DESCRIPTION_TYPE = "";
+        public static final String COLUMN_DESCRIPTION_TYPE = "TEXT NOT NULL";
     }
 }

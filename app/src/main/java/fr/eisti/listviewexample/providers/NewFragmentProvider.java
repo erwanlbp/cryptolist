@@ -2,8 +2,8 @@ package fr.eisti.listviewexample.providers;
 
 import java.util.List;
 
-import fr.eisti.listviewexample.Cryptomonnaie;
-import fr.eisti.listviewexample.Datas;
+import fr.eisti.listviewexample.datas.Cryptomonnaie;
+import fr.eisti.listviewexample.datas.Datas;
 import fr.eisti.listviewexample.fragments.NewFragment;
 
 /**
@@ -24,7 +24,7 @@ public class NewFragmentProvider {
     }
 
     public void addNewCryptomonnaie(String name, String description) {
-        Cryptomonnaie cryptomonnaie = new Cryptomonnaie(name, description);
+        Cryptomonnaie cryptomonnaie = new Cryptomonnaie(-1,name, description);
         cryptomonnaies.add(cryptomonnaie);
         fragment.getActivity().finish();
     }

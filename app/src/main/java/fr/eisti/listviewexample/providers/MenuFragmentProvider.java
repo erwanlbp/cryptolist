@@ -5,8 +5,8 @@ import android.content.res.Configuration;
 
 import java.util.List;
 
-import fr.eisti.listviewexample.Cryptomonnaie;
-import fr.eisti.listviewexample.Datas;
+import fr.eisti.listviewexample.datas.Cryptomonnaie;
+import fr.eisti.listviewexample.datas.Datas;
 import fr.eisti.listviewexample.activities.EditActivity;
 import fr.eisti.listviewexample.fragments.MenuFragment;
 
