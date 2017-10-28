@@ -4,7 +4,8 @@ import android.provider.BaseColumns;
 
 public class DBContract {
 
-    public DBContract() {}
+    public DBContract() {
+    }
 
     public static class Crypto implements BaseColumns {
         public static final String TABLE_NAME = "cryptomonnaies";

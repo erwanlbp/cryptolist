@@ -29,11 +29,11 @@ public class EditFragment extends Fragment implements View.OnClickListener {
         this.provider = new EditFragmentProvider(this);
     }
 
-    public static EditFragment newInstance(String name) {
+    public static EditFragment newInstance(int id) {
         EditFragment fragment = new EditFragment();
 
         Bundle args = new Bundle();
-        args.putString(Cryptomonnaie.NAME, name);
+        args.putInt(Cryptomonnaie.INTENT_ID, id);
         fragment.setArguments(args);
 
         return fragment;
@@ -47,12 +47,8 @@ public class EditFragment extends Fragment implements View.OnClickListener {
             return view;
         }
 
-        String name = getArguments().getString(Cryptomonnaie.NAME);
-        if (name == null || name.isEmpty()) {
-            return view;
-        }
-
-        Cryptomonnaie monnaie = this.provider.findDetails(name);
+        int id = getArguments().getInt(Cryptomonnaie.INTENT_ID);
+        Cryptomonnaie monnaie = this.provider.findDetails(id);
         if (monnaie == null) {
             return view;
         }

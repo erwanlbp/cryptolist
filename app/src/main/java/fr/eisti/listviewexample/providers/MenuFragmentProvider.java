@@ -3,11 +3,10 @@ package fr.eisti.listviewexample.providers;
 import android.content.Intent;
 import android.content.res.Configuration;
 
-import java.util.List;
-
 import fr.eisti.listviewexample.datas.Cryptomonnaie;
-import fr.eisti.listviewexample.datas.Datas;
 import fr.eisti.listviewexample.activities.EditActivity;
+import fr.eisti.listviewexample.datas.MySQLHelper;
+import fr.eisti.listviewexample.datas.dao.CryptomonnaieDAO;
 import fr.eisti.listviewexample.fragments.MenuFragment;
 
 /**
@@ -18,17 +17,13 @@ public class MenuFragmentProvider {
     // Views
     private MenuFragment fragment;
 
-    // Datas
-    private List<Cryptomonnaie> cryptomonnaies;
-
     public MenuFragmentProvider(MenuFragment fragment) {
         this.fragment = fragment;
-        this.cryptomonnaies = Datas.getInstance().getCryptomonnaies();
     }
 
-    public void edit(String name) {
+    public void edit(int id) {
         Intent intent = new Intent(fragment.getActivity(), EditActivity.class);
-        intent.putExtra(Cryptomonnaie.NAME, name);
+        intent.putExtra(Cryptomonnaie.INTENT_ID, id);
         // TODO Pas sur
         fragment.startActivity(intent);
         if (fragment.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -37,19 +32,16 @@ public class MenuFragmentProvider {
     }
 
     public boolean delete(Cryptomonnaie cryptomonnaie) {
-        boolean success = this.cryptomonnaies.remove(cryptomonnaie);
+        MySQLHelper helper = new MySQLHelper(fragment.getActivity());
+        boolean success = CryptomonnaieDAO.delete(helper, cryptomonnaie);
         if (success && fragment.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             fragment.getActivity().finish();
         }
         return success;
     }
 
-    public Cryptomonnaie findDetails(String name) {
-        for (Cryptomonnaie c : cryptomonnaies) {
-            if (c.getName().equals(name)) {
-                return c;
-            }
-        }
-        return null;
+    public Cryptomonnaie findDetails(long id) {
+        MySQLHelper helper = new MySQLHelper(fragment.getActivity());
+        return CryptomonnaieDAO.find(helper, id);
     }
 }

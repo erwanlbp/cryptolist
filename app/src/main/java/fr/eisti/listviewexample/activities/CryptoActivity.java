@@ -24,7 +24,7 @@ public class CryptoActivity extends AppCompatActivity {
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             getFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.crypto_detail, MenuFragment.newInstance(""))
+                    .replace(R.id.crypto_detail, MenuFragment.newInstance())
                     .commit();
         }
     }

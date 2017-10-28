@@ -14,11 +14,11 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        String name = getIntent().getStringExtra(Cryptomonnaie.NAME);
+        int id = getIntent().getIntExtra(Cryptomonnaie.INTENT_ID, -1);
 
         getFragmentManager()
                 .beginTransaction()
-                .add(R.id.crypto_menu, MenuFragment.newInstance(name))
+                .add(R.id.crypto_menu, MenuFragment.newInstance(id))
                 .commit();
     }
 }

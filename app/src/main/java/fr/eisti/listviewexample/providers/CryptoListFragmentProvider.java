@@ -2,16 +2,15 @@ package fr.eisti.listviewexample.providers;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import fr.eisti.listviewexample.datas.Cryptomonnaie;
-import fr.eisti.listviewexample.datas.Datas;
 import fr.eisti.listviewexample.R;
 import fr.eisti.listviewexample.activities.MenuActivity;
 import fr.eisti.listviewexample.activities.NewActivity;
+import fr.eisti.listviewexample.datas.Cryptomonnaie;
+import fr.eisti.listviewexample.datas.MySQLHelper;
+import fr.eisti.listviewexample.datas.dao.CryptomonnaieDAO;
 import fr.eisti.listviewexample.fragments.CryptomonnaiesListFragment;
 import fr.eisti.listviewexample.fragments.MenuFragment;
 
@@ -29,7 +28,6 @@ public class CryptoListFragmentProvider {
 
     public CryptoListFragmentProvider(CryptomonnaiesListFragment fragment) {
         this.fragment = fragment;
-        this.cryptomonnaies = buildList();
     }
 
     // FOR : What to do when I click on an item of the list
@@ -38,25 +36,26 @@ public class CryptoListFragmentProvider {
             Intent intent = new Intent(fragment.getActivity(), NewActivity.class);
             fragment.startActivity(intent);
         } else {
-            String cryptoName = this.cryptomonnaies.get(positionClicked).getName();
+            int cryptoID = this.cryptomonnaies.get(positionClicked).getID();
             if (fragment.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 fragment.getActivity().getFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.crypto_detail, MenuFragment.newInstance(cryptoName))
+                        .replace(R.id.crypto_detail, MenuFragment.newInstance(cryptoID))
                         .commit();
             } else {
                 Intent intent = new Intent(fragment.getActivity(), MenuActivity.class);
-                intent.putExtra(Cryptomonnaie.NAME, cryptoName);
+                intent.putExtra(Cryptomonnaie.INTENT_ID, cryptoID);
                 fragment.startActivity(intent);
             }
         }
     }
 
     public List<Cryptomonnaie> buildList() {
-        List<Cryptomonnaie> monnaies = new ArrayList<>();
-        monnaies.add(new Cryptomonnaie(-1,"Add ...", ""));
-        monnaies.addAll(Datas.getInstance().getCryptomonnaies());
-        Log.i("#####", "buildList() -> " + monnaies.size());
-        return monnaies;
+        MySQLHelper helper = new MySQLHelper(fragment.getActivity());
+
+        this.cryptomonnaies = CryptomonnaieDAO.findAll(helper);
+        this.cryptomonnaies.add(0, new Cryptomonnaie(-1, "Add ...", ""));
+
+        return cryptomonnaies;
     }
 }

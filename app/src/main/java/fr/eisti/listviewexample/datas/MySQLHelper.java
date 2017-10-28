@@ -3,8 +3,9 @@ package fr.eisti.listviewexample.datas;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
-public class MySQL extends SQLiteOpenHelper {
+public class MySQLHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_DB = "CREATE TABLE " + DBContract.Crypto.TABLE_NAME + "(" +
             DBContract.Crypto._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -13,15 +14,16 @@ public class MySQL extends SQLiteOpenHelper {
             ")";
 
     private static final String DELETE_DB = "DROP TABLE IF EXISTS " + DBContract.Crypto.TABLE_NAME;
-    private static final String NAME_DB = "Crypto.db";
+    private static final String NAME_DB = "crypto.db";
     private static final int VERSION_DB = 1;
 
-    public MySQL(Context context) {
+    public MySQLHelper(Context context) {
         super(context, NAME_DB, null, VERSION_DB);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        Log.i("#####", "onCreateDB : "+CREATE_DB);
         sqLiteDatabase.execSQL(CREATE_DB);
     }
 

@@ -14,11 +14,11 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        String name = getIntent().getStringExtra(Cryptomonnaie.NAME);
+        int id = getIntent().getIntExtra(Cryptomonnaie.INTENT_ID, -1);
 
         getFragmentManager()
                 .beginTransaction()
-                .add(R.id.crypto_edit, EditFragment.newInstance(name))
+                .add(R.id.crypto_edit, EditFragment.newInstance(id))
                 .commit();
     }
 }

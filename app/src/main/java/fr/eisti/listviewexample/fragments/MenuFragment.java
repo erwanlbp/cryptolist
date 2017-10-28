@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -19,25 +20,30 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     private TextView cryptoNameTv;
     private TextView cryptoDescriptionTv;
 
-    private String cryptoName;
+    private int cryptoID;
     private Cryptomonnaie cryptomonnaie;
 
     public MenuFragment() {
         this.provider = new MenuFragmentProvider(this);
     }
 
-    public static MenuFragment newInstance(String param1) {
-        MenuFragment fragment = new MenuFragment();
+    public static MenuFragment newInstance(int cryptoID) {
+        MenuFragment fragment = newInstance();
 
         Bundle args = new Bundle();
-        args.putString(Cryptomonnaie.NAME, param1);
+        args.putInt(Cryptomonnaie.INTENT_ID, cryptoID);
         fragment.setArguments(args);
 
         return fragment;
     }
 
+    public static MenuFragment newInstance() {
+        MenuFragment fragment = new MenuFragment();
+        return fragment;
+    }
+
     public void edit(View view) {
-        this.provider.edit(cryptoName);
+        this.provider.edit(cryptoID);
     }
 
     public void delete(View view) {
@@ -55,10 +61,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
             return view;
         }
 
-        this.cryptoName = getArguments().getString(Cryptomonnaie.NAME);
+        this.cryptoID = getArguments().getInt(Cryptomonnaie.INTENT_ID);
 
         // TODO TO CHANGE
-        this.cryptomonnaie = this.provider.findDetails(this.cryptoName);
+        this.cryptomonnaie = this.provider.findDetails(this.cryptoID);
         if (this.cryptomonnaie == null) {
             view.setVisibility(View.INVISIBLE);
             return view;

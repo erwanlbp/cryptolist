@@ -6,15 +6,16 @@ package fr.eisti.listviewexample.datas;
 
 public class Cryptomonnaie {
 
-    public final static String NAME = "CRYPTO_NAME";
+    public final static String INTENT_ID = "CRYPTO_ID";
 
-    private long ID;
+    private int ID;
     private String name;
     private String description;
 
-    public Cryptomonnaie() {}
+    public Cryptomonnaie() {
+    }
 
-    public Cryptomonnaie(long ID, String name, String description) {
+    public Cryptomonnaie(int ID, String name, String description) {
         this.ID = ID;
         this.name = name;
         this.description = description;
@@ -41,11 +42,11 @@ public class Cryptomonnaie {
         return name;
     }
 
-    public long getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(long ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 }

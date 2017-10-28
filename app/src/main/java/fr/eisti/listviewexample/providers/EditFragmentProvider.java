@@ -4,6 +4,8 @@ import java.util.List;
 
 import fr.eisti.listviewexample.datas.Cryptomonnaie;
 import fr.eisti.listviewexample.datas.Datas;
+import fr.eisti.listviewexample.datas.MySQLHelper;
+import fr.eisti.listviewexample.datas.dao.CryptomonnaieDAO;
 import fr.eisti.listviewexample.fragments.EditFragment;
 
 /**
@@ -16,37 +18,32 @@ public class EditFragmentProvider {
     private EditFragment fragment;
 
     // Datas
-    private List<Cryptomonnaie> cryptomonnaies;
-    private String oldName;
+    private Cryptomonnaie monnaie;
 
     public EditFragmentProvider(EditFragment fragment) {
         this.fragment = fragment;
-        this.cryptomonnaies = Datas.getInstance().getCryptomonnaies();
     }
 
-    public Cryptomonnaie findDetails(String name) {
-        for (Cryptomonnaie c : cryptomonnaies) {
-            if (c.getName().equals(name)) {
-                this.oldName = name;
-                return c;
-            }
-        }
-        return null;
+    public Cryptomonnaie findDetails(int id) {
+        MySQLHelper helper = new MySQLHelper(fragment.getActivity());
+        monnaie = CryptomonnaieDAO.find(helper, id);
+        return monnaie;
     }
 
     public boolean edit(String name, String description) {
-        if (oldName == null) {
+        if (monnaie == null) {
             return false;
         }
 
-        for (Cryptomonnaie c : this.cryptomonnaies) {
-            if (c.getName().equals(oldName)) {
-                c.setName(name);
-                c.setDescription(description);
-                fragment.getActivity().finish();
-                return true;
-            }
+        monnaie.setName(name);
+        monnaie.setDescription(description);
+
+        MySQLHelper helper = new MySQLHelper(fragment.getActivity());
+        boolean updated = CryptomonnaieDAO.update(helper, monnaie);
+        if (updated) {
+            fragment.getActivity().finish();
         }
-        return false;
+
+        return updated;
     }
 }
