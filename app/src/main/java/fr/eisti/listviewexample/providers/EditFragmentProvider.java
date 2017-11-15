@@ -1,9 +1,7 @@
 package fr.eisti.listviewexample.providers;
 
-import java.util.List;
 
 import fr.eisti.listviewexample.datas.Cryptomonnaie;
-import fr.eisti.listviewexample.datas.Datas;
 import fr.eisti.listviewexample.datas.MySQLHelper;
 import fr.eisti.listviewexample.datas.dao.CryptomonnaieDAO;
 import fr.eisti.listviewexample.fragments.EditFragment;

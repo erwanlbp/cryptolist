@@ -39,10 +39,18 @@ public class CustomAdapter extends ArrayAdapter<Cryptomonnaie> {
         TextView id = (TextView) row.findViewById(R.id.idCrypto);
         id.setText(String.valueOf(position));
 
-        Log.i("#####", "getView " + this.cryptomonnaies.get(position).getName());
+        Cryptomonnaie cryptomonnaie;
+        try {
+            cryptomonnaie = this.cryptomonnaies.get(position);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return row;
+        }
+
+        Log.i("#####", "getView " + cryptomonnaie.getName());
 
         TextView label = (TextView) row.findViewById(R.id.content);
-        label.setText(this.cryptomonnaies.get(position).getName());
+        label.setText(cryptomonnaie.getName());
 
 //        ImageView icon = (ImageView) row.findViewById(R.id.ivIcon);
 //        icon.setImageResource(this.thumbnails[position]);
@@ -51,7 +59,8 @@ public class CustomAdapter extends ArrayAdapter<Cryptomonnaie> {
     }
 
     public void swapItems(List<Cryptomonnaie> cryptomonnaies) {
-        this.cryptomonnaies = cryptomonnaies;
+        this.cryptomonnaies.clear();
+        this.cryptomonnaies.addAll(cryptomonnaies);
         notifyDataSetChanged();
     }
 }

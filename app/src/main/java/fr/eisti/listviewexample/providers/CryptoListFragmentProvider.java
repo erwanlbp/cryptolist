@@ -2,7 +2,9 @@ package fr.eisti.listviewexample.providers;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.util.Log;
 
+import java.util.Arrays;
 import java.util.List;
 
 import fr.eisti.listviewexample.R;
@@ -51,7 +53,7 @@ public class CryptoListFragmentProvider {
     }
 
     public List<Cryptomonnaie> buildList() {
-        MySQLHelper helper = new MySQLHelper(fragment.getActivity());
+        MySQLHelper helper = new MySQLHelper(fragment.getActivity().getApplicationContext());
 
         this.cryptomonnaies = CryptomonnaieDAO.findAll(helper);
         this.cryptomonnaies.add(0, new Cryptomonnaie(-1, "Add ...", ""));
